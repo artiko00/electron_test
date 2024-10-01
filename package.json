@@ -1,0 +1,44 @@
+{
+  "name": "electron_build",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "author": "Tu nombre o empresa",
+  "description": "Mi aplicación Electron",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^32.1.2",
+    "electron-builder": "^25.0.5"
+  },
+  "build": {
+    "appId": "com.electron.build.app",
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "dist/**/*",
+      "src/**/*",
+      "install_brew.sh"
+    ],
+   "dmg": {
+      "background": "src/background.png",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220,
+          "type": "file",
+          "path": "/Applications"
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "electron-builder"
+  }
+}
